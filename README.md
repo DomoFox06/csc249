@@ -1,7 +1,7 @@
 # Hello, I'm Domonic Fox Yarnall 👋
 
 ## About Me
-I am 
+I am 19 years old and when I am not at school or home, I am usually invlolved in the church community on Fort Bragg where I will help with various functions and help teach the second graders.
 
 ## My Foo 🎯
 In my spare time I like to read and play games. I have been into reading Disney's Twisted Tales and various mangas. The last manga I read was Drangon Ball Z, which I am a fan of. It is a very good series so I started watching the Dragon Ball anime. I plan on reading the manga Tokyo Ghoul next. I hear good things about it. I like to play pretty much any Mario game. I feel I'm pretty good at Mario Kart 8 and Mario Kart 7 🏎 and I am always down for any of the Mario Party games, but my favoite mario games would be the Luigi's Mansion series 👻 . Looking forward to when a fourth one is made 😁🤞
