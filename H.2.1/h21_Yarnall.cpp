@@ -61,7 +61,7 @@ void Invintory(vector<string> invintory){
 
   
     for (int i=0; i<invintory.size(); i++){
-        cout << invintory[i] << endl;
+        cout << i << ". " << invintory[i] << endl;
     }
 
     main();
@@ -81,7 +81,7 @@ void SearchInvintory(vector<string> invintory){
 
         if(invintory[i] == item){
 
-            cout << item << " was found in list!" << endl;
+            cout << item << " was found in list! It was in index " << i << endl;
             found = true;
             break;
         }
