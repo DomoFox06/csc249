@@ -20,7 +20,7 @@ int main (){
     //first few items
 
   
-    cout << "Inventory: " << endl;
+    cout << "Inventory items 1-4: " << endl;
 
     vector<string> invintory = {"Mushroom", "Poision Mushroom", "Golden Pipe", "Star", 
     "Coins", "Lamp", "Dice", "Boo Bell", "Coinado", "Golden Mushroom", "Pipe", "Warp Block", "Double Dice" , "Triple Dice"
@@ -34,6 +34,10 @@ int main (){
     int mainMenuChoice;
     cin >> mainMenuChoice;
 
+    bool running = true;
+
+    while (running){
+
     if (mainMenuChoice == 1){
         Invintory(invintory);
     }
@@ -42,12 +46,13 @@ int main (){
     }
     else if (mainMenuChoice == 3){
         cout << "Exiting..." << endl;
+        running = false;
     }
     else{
         cout << "Uh oh, that was not a choice :,( " << endl;
-        return 0;
+        running = false;
     }
-
+}
     return 0;
     }
 
@@ -59,6 +64,7 @@ void Invintory(vector<string> invintory){
         cout << invintory[i] << endl;
     }
 
+    main();
    
 }
 
@@ -83,6 +89,20 @@ void SearchInvintory(vector<string> invintory){
 
     if(!found){
         cout << item << " was not found in list." << endl;
+    }
+
+    cout << "Would you like to search again?" << endl << "Press 1 for yes" << endl <<
+    "Press 2 for no" << endl;
+
+    int searchChoice;
+    cin >> searchChoice;
+
+    if (searchChoice == 1){
+        cout << "👍" << endl;
+    }
+    else if (searchChoice == 2){
+        cout << "Taking you to main menu..." << endl;
+        main();
     }
 
 }
