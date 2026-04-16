@@ -16,28 +16,35 @@ unsigned long hashPassword(string password) {
     return hash;
 }
 
-UserRecord registerUser (string username, string password){
+    UserRecord registerUser(string username, string password){
     UserRecord newrecord;
     newrecord.username = username;
 
     unsigned long hashPassword(password);
 
-    bool hashPassword(password);
-    if (hashPassword(password) = true){
-        cout << "Login Successful" << endl;
-    }
-    else {
-        cout << "Login Failed" << endl;
-    }
-
     newrecord.hashPassword = hashPassword(password);
+
+    cout << "The User [ " << newrecord.username << " ] stored. User's Hash is [ " << newrecord.hashPassword << " ]" << endl;
+
 
 return newrecord;
 }
 
-int main(){
+bool loginUser(UserRecord user, string attemptedPassword, string password) {
+    unsigned long attemtedPassword;
+    if (hashPassword(attemptedPassword)==hashPassword(password)){
+        cout<< "Login Successful" << endl;
+        return true;
+        else{
+            cout << "Login Failed" << endl;
+            return false;
+        }
+    }
+}
 
-    string username1;
+int loginUser(){
+
+string username1;
     string userpass;
 
     string username2;
@@ -79,6 +86,13 @@ int main(){
 
 
 
+}
+
+int main(){
+
+    int registerUser();
+    int loginUser();
+    
     return 0;
 }
 
