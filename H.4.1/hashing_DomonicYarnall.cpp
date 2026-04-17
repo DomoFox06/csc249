@@ -16,35 +16,42 @@ unsigned long hashPassword(string password) {
     return hash;
 }
 
+struct UserRecord {
+    string username;
+    unsigned long hashedPassword; // Check the spelling here!
+};
+
     UserRecord registerUser(string username, string password){
     UserRecord newrecord;
     newrecord.username = username;
 
-    unsigned long hashPassword(password);
+    //unsigned long hashPassword(password);
 
-    newrecord.hashPassword = hashPassword(password);
+    newrecord.hashedPassword = hashPassword(password);
 
-    cout << "The User [ " << newrecord.username << " ] stored. User's Hash is [ " << newrecord.hashPassword << " ]" << endl;
+    cout << "The User [ " << newrecord.username << " ] stored. User's Hash is [ " << newrecord.hashedPassword << " ]" << endl;
 
 
 return newrecord;
 }
 
-bool loginUser(UserRecord user, string attemptedPassword, string password) {
-    unsigned long attemtedPassword;
-    if (hashPassword(attemptedPassword)==hashPassword(password)){
+bool loginUser(UserRecord user, string attemptedPassword) {
+    unsigned long attemptedHash = hashPassword(attemptedPassword);
+
+    if (attemptedHash == user.hashedPassword){
         cout<< "Login Successful" << endl;
         return true;
-        else{
+    }
+    else{
             cout << "Login Failed" << endl;
             return false;
         }
     }
-}
+
 
 int loginUser(){
 
-string username1;
+    string username1;
     string userpass;
 
     string username2;
@@ -90,8 +97,15 @@ string username1;
 
 int main(){
 
-    int registerUser();
-    int loginUser();
+    UserRecord alice = registerUser("alice", "securePass99");
+
+    // 2. Test Login
+    cout << "\n--- Login Test ---" << endl;
+    string attempt;
+    cout << "Enter password to login: ";
+    cin >> attempt;
+
+    loginUser(alice, attempt); // This will print "Successful" or "Failed"
     
     return 0;
 }
