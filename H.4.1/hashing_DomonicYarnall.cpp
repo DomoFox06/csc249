@@ -16,13 +16,27 @@ unsigned long hashPassword(string password) {
     return hash;
 }
 
-struct UserRecord {
-    string username;
-    unsigned long hashedPassword; // Check the spelling here!
+struct SaltedUserRecord {
+string username;
+unsigned long hashedPassword;
+string salt;
 };
 
-    UserRecord registerUser(string username, string password){
-    UserRecord newrecord;
+string generateSalt(int length) {
+    string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    string s = "";
+    for (int i = 0; i < length; i++) {
+
+      int index = rand() % characters.length();
+        s = s+ characters[index];
+       
+    }
+    return s;
+}
+
+
+    SaltedUserRecord registerUser(string username, string password){
+    SaltedUserRecord newrecord;
     newrecord.username = username;
 
     //unsigned long hashPassword(password);
@@ -35,7 +49,7 @@ struct UserRecord {
 return newrecord;
 }
 
-bool loginUser(UserRecord user, string attemptedPassword) {
+bool loginUser(SaltedUserRecord user, string attemptedPassword) {
     unsigned long attemptedHash = hashPassword(attemptedPassword);
 
     if (attemptedHash == user.hashedPassword){
@@ -48,7 +62,7 @@ bool loginUser(UserRecord user, string attemptedPassword) {
         }
     }
 
-
+/*
 int loginUser(){
 
     string username1;
@@ -93,21 +107,34 @@ int loginUser(){
 
 
 
-}
+}*/
 
 int main(){
 
-    UserRecord alice = registerUser("alice", "securePass99");
+    srand(time(0));
 
-    // 2. Test Login
-    cout << "\n--- Login Test ---" << endl;
+  SaltedUserRecord alice = registerUser("alice", "securePass99!");
+
+    
+    cout << "Logging In" << endl;
     string attempt;
     cout << "Enter password to login: ";
     cin >> attempt;
 
-    loginUser(alice, attempt); // This will print "Successful" or "Failed"
+    loginUser(alice, attempt); 
+
+    SaltedUserRecord bob = registerUser("bob", "securePass99!");
+
     
+    cout << "Logging In" << endl;
+    string bobattempt;
+    cout << "Enter password to login: ";
+    cin >> bobattempt;
+
+    loginUser(bob, bobattempt); 
     return 0;
 }
+
+
 
 
