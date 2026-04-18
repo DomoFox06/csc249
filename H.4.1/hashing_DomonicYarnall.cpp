@@ -40,8 +40,11 @@ string generateSalt(int length) {
     newrecord.username = username;
 
     //unsigned long hashPassword(password);
+    newrecord.salt = generateSalt(8);
 
-    newrecord.hashedPassword = hashPassword(password);
+    string combine = password + newrecord.salt;
+
+    newrecord.hashedPassword = hashPassword(combine);
 
     cout << "The User [ " << newrecord.username << " ] stored. User's Hash is [ " << newrecord.hashedPassword << " ]" << endl;
 
@@ -50,7 +53,8 @@ return newrecord;
 }
 
 bool loginUser(SaltedUserRecord user, string attemptedPassword) {
-    unsigned long attemptedHash = hashPassword(attemptedPassword);
+    string combinedAttempt = attemptedPassword + user.salt;
+    unsigned long attemptedHash = hashPassword(combinedAttempt);
 
     if (attemptedHash == user.hashedPassword){
         cout<< "Login Successful" << endl;
@@ -123,7 +127,7 @@ int main(){
 
     loginUser(alice, attempt); 
 
-    SaltedUserRecord bob = registerUser("bob", "securePass99!");
+    SaltedUserRecord bob = registerUser("bob", "123456");
 
     
     cout << "Logging In" << endl;
@@ -132,6 +136,16 @@ int main(){
     cin >> bobattempt;
 
     loginUser(bob, bobattempt); 
+
+    SaltedUserRecord carol = registerUser("carol", "123456");
+
+    
+    cout << "Logging In" << endl;
+    string carolattempt;
+    cout << "Enter password to login: ";
+    cin >> carolattempt;
+
+    loginUser(carol, carolattempt); 
     return 0;
 }
 
