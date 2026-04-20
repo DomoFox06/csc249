@@ -6,6 +6,7 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <chrono>
 using namespace std;
 
 unsigned long hashPassword(string password) {
@@ -113,6 +114,8 @@ int loginUser(){
 
 }*/
 
+
+
 int main(){
 
     srand(time(0));
@@ -146,6 +149,73 @@ int main(){
     cin >> carolattempt;
 
     loginUser(carol, carolattempt); 
+
+    //Bonus +4
+
+
+    string blandPassword = "abcd"; 
+unsigned long blandHash = hashPassword(blandPassword); 
+
+string saltedPassword = "abcd";
+string salt = "abc12345"; 
+unsigned long saltedHash = hashPassword(saltedPassword + salt);
+
+string target = "abcd"; 
+unsigned long targetHash = hashPassword("abcd" + alice.salt);
+
+auto startSalted = chrono::high_resolution_clock::now();
+
+    bool foundSalted = false;
+    for (char c1 = 'a'; c1 <= 'z' && !foundSalted; c1++) {
+    for (char c2 = 'a'; c2 <= 'z' && !foundSalted; c2++) {
+    for (char c3 = 'a'; c3 <= 'z' && !foundSalted; c3++){
+    for (char c4 = 'a'; c4 <= 'z' && !foundSalted; c4++){
+        string guess = "";
+        guess += c1; guess += c2; guess += c3; guess += c4;
+
+        if (hashPassword(guess + alice.salt) == targetHash) {
+                    cout << "Found it! Password is: " << guess << endl;
+                   foundSalted=true;
+        
+            }
+        }
+    }
+}
+auto endSalted = chrono::high_resolution_clock::now();
+
+string target2 = "abcd"; 
+unsigned long targetHash2 = hashPassword("abcd");
+
+auto startBland = chrono::high_resolution_clock::now();
+
+    bool found = false;
+    for (char c1 = 'a'; c1 <= 'z' && !found; c1++) {
+    for (char c2 = 'a'; c2 <= 'z' && !found; c2++) {
+    for (char c3 = 'a'; c3 <= 'z' && !found; c3++){
+    for (char c4 = 'a'; c4 <= 'z' && !found; c4++){
+        string guess2 = "";
+        guess2 += c1; guess2 += c2; guess2 += c3; guess2 += c4;
+
+       if (hashPassword(guess2) == blandHash) { 
+            cout << "Bland password found!" << endl;
+            found = true;
+       }
+        
+            }
+        }
+    }
+}
+
+auto endBland = chrono::high_resolution_clock::now();
+
+chrono::duration<double> Salted = endSalted - startSalted;
+chrono::duration<double> Bland = endBland - startBland;
+
+
+cout << "Salted cracking took: " << Salted.count() << " seconds." << endl;
+cout << "Bland cracking took: " << Bland.count() << " seconds." << endl;
+
+
     return 0;
 }
 
