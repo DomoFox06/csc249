@@ -248,3 +248,9 @@ unsigned long hashPassword(string password) {
 8. so the system saves the username and salted hash, right? So if someone were to get a hold look through trhe systems memory and find the uisernamme and saltedhash then enter those into the compueer, couldnt they login that way?
 
 9. but what if instead of entering the ahs where they are supposed to inside the password spot, they go behind the scences and skip pass the hash and saltedhash functions to get to the if it matches function and login that way. if they found a way into the memory, surely they can do that too
+
+10.alright, so it seems to work. so those loops are similar to what hackers use to figure out hashless passwords quickly?
+
+11. so what this does basically is it tried to sign in with hundredes of passwords in less than a second just now?
+
+12. i would like to go back to the idea that  theese passwords themeselvs are not saved but instead the hash is. If that is so, then how does the "save your password so you dont have to sign in again" thing work. google pass i think one of them are called
