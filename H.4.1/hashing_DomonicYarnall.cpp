@@ -133,7 +133,7 @@ int main(){
     SaltedUserRecord bob = registerUser("bob", "123456");
 
     
-    cout << "Logging In" << endl;
+    cout << endl << "Logging In" << endl;
     string bobattempt;
     cout << "Enter password to login: ";
     cin >> bobattempt;
@@ -143,7 +143,7 @@ int main(){
     SaltedUserRecord carol = registerUser("carol", "123456");
 
     
-    cout << "Logging In" << endl;
+    cout << endl << "Logging In" << endl;
     string carolattempt;
     cout << "Enter password to login: ";
     cin >> carolattempt;
@@ -152,7 +152,7 @@ int main(){
 
     //Bonus +4
 
-
+    cout << endl;
     string blandPassword = "abcd"; 
 unsigned long blandHash = hashPassword(blandPassword); 
 
@@ -174,12 +174,13 @@ auto startSalted = chrono::high_resolution_clock::now();
         guess += c1; guess += c2; guess += c3; guess += c4;
 
         if (hashPassword(guess + alice.salt) == targetHash) {
-                    cout << "Found it! Password is: " << guess << endl;
+                    cout << "Salted found it! Salted guess is: " << guess << endl;
                    foundSalted=true;
         
             }
         }
     }
+}
 }
 auto endSalted = chrono::high_resolution_clock::now();
 
@@ -197,7 +198,7 @@ auto startBland = chrono::high_resolution_clock::now();
         guess2 += c1; guess2 += c2; guess2 += c3; guess2 += c4;
 
        if (hashPassword(guess2) == blandHash) { 
-            cout << "Bland password found!" << endl;
+        cout << "Bland found it! Bland guess is: " << guess2 << endl;
             found = true;
        }
         
