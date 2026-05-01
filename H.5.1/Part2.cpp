@@ -54,6 +54,7 @@ int main() {
     LuigiMansion.AddUndirectedEdge(teller, mirror, "1 Door");
     LuigiMansion.AddUndirectedEdge(rec, court, "1 Door");
     LuigiMansion.AddUndirectedEdge(pool, video, "1 Door");
+    LuigiMansion.AddUndirectedEdge(foyer,hall, "1 Door");
 
 
 
@@ -68,6 +69,32 @@ int main() {
         cout << endl;
     }
 
+    
+    cout << "==Queries=="<<endl;
+       //queriy 1
+    for (Vertex* v : LuigiMansion.GetVertices()) {
+        cout << v->label << " has " 
+             << LuigiMansion.GetEdgesFrom(v)->size() 
+             << " connections" << endl;
+    }
+    cout << endl;
+       //queriy 2
+    cout << "Direct connection between Hallway and Kitchen? " 
+         << (LuigiMansion.HasEdge(hall, kitchen) ? "Yes" : "No") << endl;
+    cout << endl;
+
+   //queriy 3
+    Vertex* found = LuigiMansion.GetVertex("Hidden Room");
+    if (found) {
+        cout << "Found: " << found->label << endl;
+    } else {
+        cout << "Not found!" << endl;
+    }
+    cout << endl;
+
+      //queriy 4
+    cout << "Total Vertices (Rooms): " << LuigiMansion.GetVertices().size() << endl;
+    cout << "Total Edges (Paths): " << LuigiMansion.GetEdges().size() << endl;
 
 return 0;
 }

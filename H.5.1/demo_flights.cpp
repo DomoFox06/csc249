@@ -1,3 +1,19 @@
+/*1. What does `AddVertex()` return?
+        It returns a pointer which creates a new vertex. This makes it where we can store the memory 
+        adress for futer edges.
+2. What's the difference between `AddDirectedEdge()` and
+`AddUndirectedEdge()`?
+        Directed only does one direction, whereas undirected can go both directions.
+3. What does `GetEdgesFrom()` give you? How is that different
+from `GetEdgesTo()`?
+        EdgesFrom returns a pointer to a vector containing all outgoing edges.
+        EdgesTo returns a pointer to a vector of incoming edges
+4. What does the edge `weight` represent in this demo?
+        The weight in this demo is represented in the distance in miles between cities. 
+*/
+
+
+
 // demo_flights.cpp — CSC 249 Graph Demo
 // Compile: g++ -std=c++17 demo_flights.cpp -o demo_flights
 // Run: ./demo_flights
