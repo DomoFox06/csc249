@@ -15,7 +15,7 @@ int main() {
     Vertex* hidden = LuigiMansion.AddVertex("Hidden Room");
     Vertex* dining = LuigiMansion.AddVertex("Dining Room");
     Vertex* kitchen = LuigiMansion.AddVertex("Kitchen");
-    Vertex boneyard = LuigiMansion.AddVertex("BoneYard");
+    Vertex* boneyard = LuigiMansion.AddVertex("BoneYard");
     Vertex* grave = LuigiMansion.AddVertex("GraveYard");
     Vertex* ball = LuigiMansion.AddVertex("Ball Room");
     Vertex* storage = LuigiMansion.AddVertex("Storage Room");
@@ -45,11 +45,28 @@ int main() {
     LuigiMansion.AddUndirectedEdge(hall, hidden, "3 Doors");
     LuigiMansion.AddUndirectedEdge(hall, boneyard, "3 Doors");
     LuigiMansion.AddUndirectedEdge(hall, grave, "4 Doors");
+    LuigiMansion.AddUndirectedEdge(laundry, butler, "1 Door");
+    LuigiMansion.AddUndirectedEdge(hidden, butler, "1 Door");
+    LuigiMansion.AddUndirectedEdge(dining, kitchen, "1 Door");
+    LuigiMansion.AddUndirectedEdge(kitchen, boneyard, "1 Door");
+    LuigiMansion.AddUndirectedEdge(boneyard, grave, "1 Door");
+    LuigiMansion.AddUndirectedEdge(ball, storage, "1 Door");
+    LuigiMansion.AddUndirectedEdge(teller, mirror, "1 Door");
+    LuigiMansion.AddUndirectedEdge(rec, court, "1 Door");
+    LuigiMansion.AddUndirectedEdge(pool, video, "1 Door");
 
-    cout << "=== Luigi"s Mansion Floor 1 ===" << endl;
-    for (Vertex* v : myGraph.GetVertices()) {
-        cout << "Vertex: " << v->label << endl;
-   }
+
+
+    cout << "=== Luigi's Mansion Floor 1 ===" << endl;
+    for (Vertex* v : LuigiMansion.GetVertices()) {
+        cout << "Room: " << v->label << endl;
+        
+        for (Edge* e : *LuigiMansion.GetEdgesFrom(v)) {
+            cout << "  -> leads to: " << e->toVertex->label 
+                 << " (" << e->weight << ")" << endl;
+        }
+        cout << endl;
+    }
 
 
 return 0;
